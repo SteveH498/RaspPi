@@ -1,0 +1,33 @@
+Static IP Address:
+--------------------
+
+sudo cat /etc/dhcpcd.conf
+--> static ip_address=192.168.178.40/24
+
+WIFI Conifg:
+----------------
+
+cat /etc/network/interfaces
+
+allow-hotplug wlan0
+iface wlan0 inet manual
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+
+
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf 
+
+
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=DE
+
+network={
+        scan_ssid=1
+        ssid="<ESSID>"
+        psk="<PASSWORD>"
+        key_mgmt=WPA-PSK
+}
+
+
+
+
